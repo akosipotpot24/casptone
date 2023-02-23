@@ -298,36 +298,10 @@ require 'mainConnect.php';
        </div>
 
 
-
-
-
-
-     
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         <?php
                            }
                            else{
-                            echo "no record found";
+                            echo "No record found!";
                            }
                          }
                          

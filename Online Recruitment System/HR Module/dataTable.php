@@ -165,7 +165,7 @@ if(isset($_POST['delete'])){
     else{
        echo "<script>
               Swal.fire({
-                title: 'Applicant Not EDITED',
+                title: 'Applicant Not Deleted',
                 icon: 'error',
                 confirmButtonText: 'OK'
               }).then(() => {
@@ -174,7 +174,160 @@ if(isset($_POST['delete'])){
             </script>";
     }
 }
+
+
+if(isset($_POST['update'])){
+  $reference_no = $_POST['reference_no'];
+  $firstname = $_POST['fname'];
+  $middlename = $_POST['mname'];
+  $lastname = $_POST['lname'];
+  $bplace = $_POST['bplace'];
+  $bdate = $_POST['birthdate'];
+  $age = $_POST['age'];
+  $gender = $_POST['gender'];
+  $email = $_POST['email'];
+  $phone = $_POST['phone'];
+  $civil = $_POST['civil'];
+  $province = $_POST['province'];
+  $city = $_POST['city'];
+  $baranggay = $_POST['baranggay'];
+  $street = $_POST['street'];
+  $postal = $_POST['postal'];
+  $father_name = $_POST['father'];
+  $father_occu = $_POST['f_occu'];
+  $mother_name = $_POST['mother'];
+  $mother_occu = $_POST['m-occu'];
+  
+  $college_name = $_POST['cname'];
+  $collegeprogram = $_POST['cprogram'];
+  $colleg_graduated = $_POST['cyear'];
+
+  $senior_name = $_POST['sname'];
+  $senior_program = $_POST['sprogram'];
+  $senior_graduated = $_POST['syear'];
+
+  $high_name = $_POST['hname'];
+  $high_graduated = $_POST['hyear'];
+
+  $elem_name = $_POST['ename'];
+  $elem_graduated = $_POST['eyear'];
+
+  $firstExpName = $_POST['company_name1'];
+  $firstExpAdd = $_POST['company_address1'];
+  $firstposition = $_POST['position1'];
+  $firstdate_start = $_POST['work_date_start1'];
+  $firstdate_end = $_POST['date_ended1'];
+
+  $secondExpName = $_POST['company_name2'];
+  $secondExpAdd = $_POST['company_address2'];
+  $secondposition = $_POST['position2'];
+  $seconddate_start = $_POST['work_date_start2'];
+  $seconddate_end = $_POST['date_ended2'];
+
+  $thirdExpName = $_POST['company_name3'];
+  $thirdExpAdd = $_POST['company_address3'];
+  $thirdposition = $_POST['position3'];
+  $thirddate_start = $_POST['work_date_start3'];
+  $thirddate_end = $_POST['date_ended3'];
+
+  $email_ref = $_POST['email_ref'];
+  $phone_ref = $_POST['phone_ref'];
+  $occu_ref = $_POST['occu_ref'];
+
+
+  $status = $_POST['status'];
+
+
+  $query = "UPDATE applicant_info SET
+   firstname='$firstname',
+   middlename='$middlename',
+   lastname='$lastname',
+   birthplace='$bplace',
+   birthdate='$bdate',
+   age='$age',
+   gender='$gender',
+   email='$email',
+   phone='$phone',
+   civil_status='$civil',
+   state='$province',
+   city='$city',
+   baranggay='$baranggay',
+   street='$street',
+   postal='$postal',
+   f_name='$father_name',
+   f_occu='$father_occu',
+   m_name='$mother_name',
+   m_occu='$mother_occu',
+
+   c_name='$college_name',
+   c_program='$collegeprogram',
+   c_year='$colleg_graduated',
+
+   s_name='$senior_name',
+   s_program='$senior_program',
+   s_year='$senior_graduated',
+
+   h_name='$high_name',
+   h_year='$high_graduated',
+
+   e_name='$elem_name',
+   e_year='$elem_graduated',
+
+   compname1='$firstExpName',
+   compadd1='$firstExpAdd',
+   position1='$firstposition',
+   date_started1='$firstdate_start',
+   date_ended1='$firstdate_end',
+
+   compname2='$secondExpName',
+   compadd2='$secondExpAdd',
+   position2='$secondposition',
+   date_started2='$seconddate_start',
+   date_ended2='$seconddate_end',
+
+   compname3='$thirdExpName',
+   compadd3='$thirdExpAdd',
+   position3='$thirdposition',
+   date_started3='$thirddate_start',
+   date_ended3='$thirddate_end',
+
+   email_ref='$email_ref',
+   phone_ref='$phone_ref',
+   occu_ref='$occu_ref',
+
+    status='$status' 
+    WHERE reference_no = '$reference_no'";
+
+
+
+
+
+  if(mysqli_query($conn,$query)){
+    echo "<script>
+    Swal.fire({
+      title: 'Successfully Edited!',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    }).then(() => {
+      window.location.href = 'dataTable.php';
+    });
+  </script>";
+
+  }else{
+    echo "<script>
+              Swal.fire({
+                title: 'Applicant Not Edited',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              }).then(() => {
+                window.location.href = 'dataTable.php';
+              });
+            </script>";
+  }
+}
+
 ?>
+
 
 
 

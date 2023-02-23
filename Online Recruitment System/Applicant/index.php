@@ -32,6 +32,7 @@
       <nav class="navigation container">
         <ul class="row navi">
           <li class="active"><a href="/index.html">Home</a></li>
+          <li><a href="#footer">See Jobs</a></li>
           <li><a href="#footer">Contact Us</a></li>
         </ul>
       </nav>

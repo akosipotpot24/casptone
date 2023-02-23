@@ -53,7 +53,7 @@ session_start();
  <div class="row" style="max-width: 90%; margin: 0 auto;"> 
     <div class="col-lg-4">
       <label for="birthplace">Birthplace:</label>
-      <input type="text" class="form-control" name="bplace" id="userName" placeholder = "Enter birthplace" required>        
+      <input type="text" class="form-control" name="bplace" id="bplace" placeholder = "Enter birthplace" required>        
     </div>
   <br>
   <div class="col-lg-3">
@@ -143,7 +143,7 @@ session_start();
         <div class="row" style="max-width: 90%; margin: 0 auto;"> <!--row 7-->
         <div class="col-lg-4">
                  <label for="mother">Mother's Full Name:</label>
-              <input class="form-control" type="text" id="mother-name" placeholder="   Enter Mother's Name" name="mother" required/>
+              <input class="form-control" type="text" id="mother-name" placeholder="Enter Mother's Name" name="mother" required/>
         </div>
         <div class="col-lg-4">
            <label for="motherOccupation">Mother Occupation:</label>
@@ -292,9 +292,18 @@ session_start();
         <br>
      <div class="row" style="max-width: 90%; margin: 0 auto;"> 
             <legend>Character Reference</legend>
+            <div class="col-lg-4">
+            <label for="email">First name:</label>
+            <input class="form-control" type="text" name="cfname" id="email" placeholder="Enter Firstname e.g juan">
+          </div>
+          <div class="col-lg-4">
+            <label for="email">Last name:</label>
+            <input class="form-control" type="text" name="clname" id="email" placeholder="Enter Last name e.g dela cruz">
+            <br>
+          </div>
            <div class="col-lg-4">
-            <label for="email">Name:</label>
-            <input class="form-control" type="text  " name="email_ref" id="email" placeholder="Enter Email e.g juan@gmail.com">
+            <label for="email">Email:</label>
+            <input class="form-control" type="email" name="email_ref" id="email" placeholder="Enter Email e.g juan@gmail.com">
           </div>
            <div class="col-lg-4">
             <label for="number">Contact Number:</label>
