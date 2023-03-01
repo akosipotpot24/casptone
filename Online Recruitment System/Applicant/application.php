@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'mainConnect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +14,17 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
     <script src="birthday.js" defer></script>
+    <script src="validation.js" defer></script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <body>
+    <!-- Include Bootstrap CSS and JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/XpZ4y3RSKB8kSk" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <form action="applicationConnect.php" method="post">
- <br>
- <br>
- <br>
-  <header>
+    <body>
+    <header>
         <img src="aoe.png" class="logo" />
         <div class="comDetails">
           <p class="compName">
@@ -28,23 +32,30 @@ session_start();
           </p>
         </div>
       </header>
+
+
+  <form class="needs-validation" novalidate action="applicationConnect.php" method="post">
+ 
+
  <!-- PERSONAL INFORMATION ROW -->
 
  <div class="row" style="max-width: 90%; margin: 0 auto;"> 
       <legend>Personal Information</legend>
-    <div class="col-lg-4  ">
+      <div class="col-lg-4">
       <label for="firstname">First Name:</label>
-      <input type="text" class="form-control" name="fname" id="userName" placeholder = "Enter first name e.g Juan" required>        
+      <input type="text" class="form-control" name="fname" id="userName" placeholder="Enter first name e.g Juan" required>
+      <div class="invalid-feedback">Please enter your firstname! </div>
+      
     </div>
   <br>
-    <div class="col-lg-4">
+  <div class="col-lg-4">
       <label for="middlename">Middle Name:</label>
-      <input type="text" class="form-control" name="mname" id="userLastName" placeholder = "Enter middle name e.g Reyes">
+      <input type="text" class="form-control" name="mname" id="userLastName" placeholder="Enter middle name e.g Reyes">
     </div>
-  <br>
-    <div class=" col-lg-4">
+    <div class="col-lg-4">
       <label for="lastname">Last Name:</label>
       <input type="text" class="form-control" name="lname" id="email1" placeholder="Enter last name e.g Dela Cruz" required>
+      <div class="invalid-feedback">Please enter your last name</div>
     </div>
   </div>
   <br>
@@ -53,17 +64,21 @@ session_start();
  <div class="row" style="max-width: 90%; margin: 0 auto;"> 
     <div class="col-lg-4">
       <label for="birthplace">Birthplace:</label>
-      <input type="text" class="form-control" name="bplace" id="bplace" placeholder = "Enter birthplace" required>        
+      <input type="text" class="form-control" name="bplace" id="bplace" placeholder = "Enter birthplace" required>  
+      <div class="invalid-feedback">Please enter your birthplace</div>      
     </div>
   <br>
   <div class="col-lg-3">
   <label for="Birthdate">Birthdate:</label>
   <input type="date" class="form-control" name="birthdate" id="birthdate" placeholder="Enter birthdate" required>
+  <div class="invalid-feedback">Please enter your birthdate</div>
+  
 </div>
 <br>
 <div class="col-lg-2">
   <label for="Age">Age:</label>
   <input type="text" class="form-control" name="age" id="age" placeholder="Age" readonly>
+  <div id="age-feedback" class="invalid-feedback">You must be at least 18 years old.</div>
 </div>
     <div class="col-lg-3">
           <label for="gender">Gender:</label>
@@ -73,6 +88,7 @@ session_start();
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
+              <div class="invalid-feedback">Please enter your gender</div>
         </div>
   </div>
  <br>
@@ -82,11 +98,13 @@ session_start();
         <div class="col-lg-4">
           <label for="email">Email:</label>
               <input class="form-control"type="email"id="emailAdd"name="email"placeholder="name@gmail.com" required/>
+              <div class="invalid-feedback">Please enter your email</div>
         </div>
         <div class="col-lg-4">
           <label for="number">Contact Number:</label>
               <input class="form-control" type="tel" id="phone" name="phone" placeholder="Enter Contact Number e.g 0912-345-6789" pattern="[0-9]{11}" required/>
-        </div>
+              <div class="invalid-feedback">Please enter your Contact Number</div>
+            </div>
          <div class="col-lg-4">
           <label for="status">Civil Status:</label>
               <select class="form-control" id="civil-status" name="civil" required>
@@ -96,6 +114,7 @@ session_start();
                 <option value="widowed">Widowed</option>
                 <option value="divorced">Divorced</option>
               </select>
+              <div class="invalid-feedback">Please enter your Civil Status</div>
         </div>
         </div>
         <br> 
@@ -106,22 +125,27 @@ session_start();
        <div class="col-lg-2">
           <label for="province/state">Province/State:</label>
               <input class="form-control" type="text" id="province" name="province" placeholder="Enter Province/State" required/>
+              <div class="invalid-feedback">Please enter your Province / State</div>
         </div>
         <div class="col-lg-2">
           <label for="city">City:</label>
               <input class="form-control" type="text" id="city" name="city" placeholder="Enter City" required/>
+              <div class="invalid-feedback">Please enter your City</div>
         </div>
         <div class="col-lg-3">
           <label for="baranggay">Baranggay:</label>
           <input class="form-control" type="text" id="baranggay" name="baranggay" placeholder="Enter Baranggay" required/>
+          <div class="invalid-feedback">Please enter your Baranggay</div>
         </div>
         <div class="col-lg-3">
           <label for="address">Street Address:</label>
               <input class="form-control" type="text" id="street-address" name="street" placeholder="Enter Street Address" required/>
+              <div class="invalid-feedback">Please enter your Address</div>
         </div>
         <div class="col-lg-2">
           <label for="postal">Enter Postal Code:</label>
               <input class="form-control" type="tel" id="postal-code" name="postal" placeholder="Enter Postal Code" required/>
+              <div class="invalid-feedback">Please enter your Postal Code</div>
         </div>
        
   </div>
@@ -131,11 +155,11 @@ session_start();
          <legend>Parent / Guardian</legend>
         <div class="col-lg-4">
           <label for="father">Father's Full Name:</label>
-              <input class="form-control" type="text" id="father-name" name="father" placeholder="Enter Father's Name" required/>
+              <input class="form-control" type="text" id="father-name" name="father" placeholder="Enter Father's Name" />
         </div>
         <div class="col-lg-4">
           <label for="fatherOccupation">Father Occupation:</label>
-              <input class="form-control" type="text"id="f_occu"name="f_occu" placeholder="Enter Father's Occupation" required/>
+              <input class="form-control" type="text"id="f_occu"name="f_occu" placeholder="Enter Father's Occupation" />
         </div>
            </div>
         <br> 
@@ -143,11 +167,11 @@ session_start();
         <div class="row" style="max-width: 90%; margin: 0 auto;"> <!--row 7-->
         <div class="col-lg-4">
                  <label for="mother">Mother's Full Name:</label>
-              <input class="form-control" type="text" id="mother-name" placeholder="Enter Mother's Name" name="mother" required/>
+              <input class="form-control" type="text" id="mother-name" placeholder="Enter Mother's Name" name="mother" />
         </div>
         <div class="col-lg-4">
            <label for="motherOccupation">Mother Occupation:</label>
-              <input class="form-control" type="text" id="m_occu" name="m-occu" placeholder="Enter Mother's Occupation" required/>
+              <input class="form-control" type="text" id="m_occu" name="m-occu" placeholder="Enter Mother's Occupation" />
         </div>
         </div>
         <br>
@@ -313,33 +337,125 @@ session_start();
             <label for="occupation">Occupation:</label>
             <input class="form-control" type="text" name="occu_ref" id="email" placeholder="Enter Occupation">
           </div>
-       <div class="row" style="max-width: 90%; margin: 0 auto;">
-    <div class="row" style="max-width: 90%; margin: 0 auto;">
+    
+  
 
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <label for="cv" style="margin-bottom: 10px;">Upload Resume Here:</label>
-      <input accept=".pdf,.doc,.docx" style="background:#ECEFF1; padding:8px  15px; border-radius:50px;" type="file" class="form-control-file" id="cv" name="cv_file">
-    </div>
+   
 </div>
-
+<div class="row"  style="max-width: 90%; margin: 0 auto;">
+<div class="row ">
+<div class="col-lg-4">
+      <label for="cv" >Upload Resume Here:</label>
+      <input accept=".pdf,.doc,.docx" style="background:#ECEFF1; padding:8px  15px; border-radius:50px;" type="file" class="form-control-file" id="cv" name="cv_file" required>
+      <div class="invalid-feedback">Please upload a resume</div>
+</div>
 </div>
          <div class="row"> 
-    <div class="col-md-12">
+
+    <div class="col-lg-4">
       <p style="margin-top: 3%;">
         I hereby certify that all details provided are true and correct to my knowledge. False information may lead to cancellation of application and/or termination of employment.
       </p>
-      <label for="agreement">
-        <input type="checkbox" id="agreement" name="agreement" required> I agree
+      <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        I Agree 
       </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
     </div>
+    
   </div>
- <div class="row"> 
-    <div class="col-md-12">
-    <button type="submit" name="save" value="Submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?');">Submit</button>
+
+  <div class="row"> 
+    <div class="col-lg-4">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Submit
+        </button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" name="save" value="Submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
-  </div>
+</div>
+  
 </form>
- </form>                     
+
+<script>
+    // Get the birthdate input field and age output field
+    var birthdateField = document.getElementById("birthdate");
+    var ageField = document.getElementById("age");
+
+    // Add event listener to the birthdate field
+    birthdateField.addEventListener("change", function() {
+        // Calculate the age from the birthdate
+        var today = new Date();
+        var birthdate = new Date(birthdateField.value);
+        var age = today.getFullYear() - birthdate.getFullYear();
+        var monthDiff = today.getMonth() - birthdate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
+            age--;
+        }
+        // Set the age output field
+        ageField.value = age;
+        // Check if the age is at least 18
+        if (age < 18) {
+            // Display an error message
+            document.getElementById("age-feedback").style.display = "block";
+            // Disable the submit button
+            document.querySelector("button[name='save']").disabled = true;
+        } else {
+            // Hide the error message
+            document.getElementById("age-feedback").style.display = "none";
+            // Enable the submit button
+            document.querySelector("button[name='save']").disabled = false;
+        }
+    });
+    
+
+
+
+
+
+    // when the form is submitted
+$('#exampleModal form').on('submit', function (e) {
+    e.preventDefault(); // prevent the default form submit action
+
+    // check if all fields are filled in
+    var allFieldsFilledIn = true;
+    $('#exampleModal input').each(function() {
+        if ($(this).val() === '') {
+            allFieldsFilledIn = false;
+            return false; // exit the loop early
+        }
+    });
+
+   
+});
+
+</script>
+
 </body>
 </html>

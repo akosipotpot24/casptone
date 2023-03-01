@@ -14,7 +14,3 @@
     document.getElementById("age").value = age;
   });
 
-
-
-
-

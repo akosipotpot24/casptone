@@ -45,7 +45,7 @@ require 'mainConnect.php';
         <!--row 1-->   <div class="row">
 <br>
   <div class="col-lg-4  ">
-    <label  for="firstname"><b>Firstname:</b> <p style= class="form"><?=$applicant['firstname'];?></p></label>
+    <label  for="firstname"><b>Firstname:</b> <p class = "form"><?=$applicant['firstname'];?></p></label>
                 </div>
   <br>
     <div class="col-lg-4">
